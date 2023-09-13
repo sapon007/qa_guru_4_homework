@@ -1,2 +1,5 @@
-package com.github;public class SoftAssertionsTests {
+package com.github;
+
+public class SoftAssertionsTests {
+    
 }
