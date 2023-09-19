@@ -26,6 +26,17 @@ public class SoftAssertionsTests {
     @Test
     void jUnit5CodeShouldBeOnThePage() {
         open("/selenide/selenide/wiki/SoftAssertions");
-        $("#wiki-body").shouldHave(text("Using JUnit5"));
+        $("#wiki-body").shouldHave(text("""
+                @ExtendWith({SoftAssertsExtension.class})
+                class Tests {
+                  @Test
+                  void test() {
+                    Configuration.assertionMode = SOFT;
+                    open("page.html");
+
+                    $("#first").should(visible).click();
+                    $("#second").should(visible).click();
+                  }
+                }"""));
     }
 }
